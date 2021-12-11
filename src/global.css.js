@@ -4,6 +4,13 @@ export default createGlobalStyle`
   :root {
     --bg-main: #f5f5f5;
     --font-main: #222;
+    --gray-cc: #ccc;
+    --pink: #f99;
+    --pink-bright: #f66;
+  }
+
+  * {
+    box-sizing: border-box;  
   }
 
   html {
