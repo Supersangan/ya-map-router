@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
-import { IMenuItems } from '../../interfaces/menuItems';
+import React from 'react';
 import { Form } from './Form/Form';
 import { List } from './List';
 
 export function Menu() {
-  const [items, setItems] = useState<IMenuItems>([]);
-
   return (
     <>
-      <Form setItems={setItems} />
+      <Form/>
 
-      <List items={items} setItems={setItems}/>
+      <List/>
     </>
   );
 }

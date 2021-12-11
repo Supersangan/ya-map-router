@@ -1,15 +1,13 @@
-import React, { ChangeEvent, useState } from 'react';
+import React, { ChangeEvent, useContext, useState } from 'react';
 import * as S from './styles';
-import { IMenuItems } from '../../../interfaces/menuItems';
 import { getRandomKey } from '../../../utils/getRandomkey';
-
-interface IFormProps {
-  setItems: (items: any) => void;
-}
+import { PlacemarksContext } from '../..';
+import { IPlacemarks } from '../../../interfaces/placemarks';
 
 const placeholder = 'Новая точка маршрута';
 
-export function Form({setItems} : IFormProps) {
+export function Form() {
+  const { setItems } = useContext(PlacemarksContext);
   const [value, setValue] = useState('');
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -18,14 +16,23 @@ export function Form({setItems} : IFormProps) {
 
   function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
-    setItems((items: IMenuItems): IMenuItems => [...items, {id: getRandomKey(), name: value}]);
+    setItems(
+      (items: IPlacemarks): IPlacemarks => [
+        ...items,
+        { id: getRandomKey(), name: value, geometry: [0, 0] },
+      ]
+    );
     setValue('');
   }
 
   return (
     <form action="" onSubmit={handleSubmit}>
-      <S.Input type="text" placeholder={placeholder} onChange={handleChange} value={value}/>
+      <S.Input
+        type="text"
+        placeholder={placeholder}
+        onChange={handleChange}
+        value={value}
+      />
     </form>
   );
 }
- 

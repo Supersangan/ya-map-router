@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import * as S from './styles';
 import { IMenuItems } from '../../../interfaces/menuItems';
 import { Item } from './Item';
@@ -17,13 +17,11 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
+import { PlacemarksContext } from '../..';
 
-interface IListProps {
-  items: IMenuItems;
-  setItems: (items: any) => void;
-}
-
-export function List({ items, setItems }: IListProps) {
+export function List() {
+  const { items, setItems } = useContext(PlacemarksContext);
+  
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
