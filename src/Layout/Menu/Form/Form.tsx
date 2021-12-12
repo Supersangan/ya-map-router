@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
 import * as S from './styles';
 import { getRandomKey } from '../../../utils/getRandomkey';
-import { PlacemarksContext } from '../..';
+import { MapContext, PlacemarksContext } from '../..';
 import { IPlacemarks } from '../../../interfaces/placemarks';
 
 const placeholder = 'Новая точка маршрута';
@@ -9,6 +9,7 @@ const placeholder = 'Новая точка маршрута';
 export function Form() {
   const { setItems } = useContext(PlacemarksContext);
   const [value, setValue] = useState('');
+  const { center } = useContext(MapContext);
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setValue(event.target.value);
@@ -19,7 +20,7 @@ export function Form() {
     setItems(
       (items: IPlacemarks): IPlacemarks => [
         ...items,
-        { id: getRandomKey(), name: value, geometry: [0, 0] },
+        { id: getRandomKey(), name: value, geometry: center },
       ]
     );
     setValue('');

@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import * as S from './styles';
-import { IMenuItems } from '../../../interfaces/menuItems';
 import { Item } from './Item';
 import {
   closestCenter,
@@ -14,10 +13,11 @@ import {
 import {
   arrayMove,
   SortableContext,
-  sortableKeyboardCoordinates,
+  sortableKeyboardCoordinates, 
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { PlacemarksContext } from '../..';
+import { IPlacemarks } from '../../../interfaces/placemarks';
 
 export function List() {
   const { items, setItems } = useContext(PlacemarksContext);
@@ -31,7 +31,7 @@ export function List() {
 
   function deleteItem(id: string): void {
     setItems(
-      (items: IMenuItems): IMenuItems => items.filter((item) => item.id !== id)
+      (items: IPlacemarks): IPlacemarks => items.filter((item) => item.id !== id)
     );
   }
 
@@ -39,7 +39,7 @@ export function List() {
     const { active, over } = event; 
 
     if (active.id !== over?.id) {
-      setItems((items: IMenuItems): IMenuItems => {
+      setItems((items: IPlacemarks): IPlacemarks => {
         const leftIndex = items.findIndex((item) => item.id === active.id);
         const rightIndex = items.findIndex((item) => item.id === over?.id);
 
@@ -48,7 +48,7 @@ export function List() {
     }
   }
 
-  return (
+  return ( 
     <DndContext
       sensors={sensors}
       collisionDetection={closestCenter}
