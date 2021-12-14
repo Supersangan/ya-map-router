@@ -17,7 +17,7 @@ import {
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { PlacemarksContext } from '../..';
-import { IPlacemarks } from '../../../interfaces/placemarks';
+import { IPlacemarks } from '../../../../interfaces/placemarks';
 
 export function List() {
   const { items, setItems } = useContext(PlacemarksContext);

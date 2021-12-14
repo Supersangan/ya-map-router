@@ -3,8 +3,8 @@ import 'normalize.css';
 import * as S from './styles';
 import { Menu } from './Menu';
 import { Map } from './Map';
-import { IPlacemarks, IPlacemarksContext } from '../interfaces/placemarks';
-import { ICenter, IMapContext } from '../interfaces/map';
+import { IPlacemarks, IPlacemarksContext } from '../../interfaces/placemarks';
+import { ICenter, IMapContext } from '../../interfaces/map';
 
 export const PlacemarksContext = React.createContext<IPlacemarksContext>(
   {} as IPlacemarksContext

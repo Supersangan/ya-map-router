@@ -8,7 +8,7 @@ import {
 } from 'react-yandex-maps';
 import styled from 'styled-components';
 import { MapContext, PlacemarksContext } from '..';
-import { IPlacemark, IPlacemarks } from '../../interfaces/placemarks';
+import { IPlacemark, IPlacemarks } from '../../../interfaces/placemarks';
 
 const MapWrapper = styled.div`
   position: absolute;

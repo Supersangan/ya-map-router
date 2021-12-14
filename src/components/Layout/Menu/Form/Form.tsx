@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
 import * as S from './styles';
-import { getRandomKey } from '../../../utils/getRandomkey';
+import { getRandomKey } from '../../../../utils/getRandomkey';
 import { MapContext, PlacemarksContext } from '../..';
-import { IPlacemarks } from '../../../interfaces/placemarks';
+import { IPlacemarks } from '../../../../interfaces/placemarks';
 
 const placeholder = 'Новая точка маршрута';
 
@@ -17,12 +17,16 @@ export function Form() {
 
   function handleSubmit(event: React.SyntheticEvent<HTMLFormElement>) {
     event.preventDefault();
+
+    if (value.length === 0) return;
+
     setItems(
       (items: IPlacemarks): IPlacemarks => [
         ...items,
         { id: getRandomKey(), name: value, geometry: center },
       ]
     );
+    
     setValue('');
   }
 

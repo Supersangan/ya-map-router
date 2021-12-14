@@ -1,6 +1,6 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
-export default createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
   :root {
     --bg-main: #f5f5f5;
     --font-main: #222;
@@ -28,4 +28,4 @@ export default createGlobalStyle`
   body {
     color: var(--font-main);
   }
-`
+`;
