@@ -13,7 +13,7 @@ import {
 import {
   arrayMove,
   SortableContext,
-  sortableKeyboardCoordinates, 
+  sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from '@dnd-kit/sortable';
 import { PlacemarksContext } from '../..';
@@ -21,7 +21,7 @@ import { IPlacemarks } from '../../../../interfaces/placemarks';
 
 export function List() {
   const { items, setItems } = useContext(PlacemarksContext);
-  
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -31,12 +31,13 @@ export function List() {
 
   function deleteItem(id: string): void {
     setItems(
-      (items: IPlacemarks): IPlacemarks => items.filter((item) => item.id !== id)
+      (items: IPlacemarks): IPlacemarks =>
+        items.filter((item) => item.id !== id)
     );
   }
 
   function handleDragEnd(event: DragEndEvent) {
-    const { active, over } = event; 
+    const { active, over } = event;
 
     if (active.id !== over?.id) {
       setItems((items: IPlacemarks): IPlacemarks => {
@@ -48,7 +49,9 @@ export function List() {
     }
   }
 
-  return ( 
+  if (!items?.length) return null;
+
+  return (
     <DndContext
       sensors={sensors}
       collisionDetection={closestCenter}

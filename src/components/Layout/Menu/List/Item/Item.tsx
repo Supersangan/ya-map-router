@@ -24,11 +24,12 @@ export function Item({ id, name, deleteItem }: IItemProps) {
   }
 
   return (
-    <S.Root {...attributes} {...listeners} style={style} ref={setNodeRef}>
+    <S.Root {...attributes} {...listeners} style={style} ref={setNodeRef} data-testid="list-item-root">
       <S.Name>{name}</S.Name>
-      <S.DeleteButton onClick={deleteItem} onPointerDown={handlePointerDown}>
-        <IconDelete />
+      <S.DeleteButton onClick={deleteItem} onPointerDown={handlePointerDown} data-testid="list-item-delete">
+        <IconDelete/>
       </S.DeleteButton>
     </S.Root>
   );
 }
+ 
