@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { List } from './List';
 import { PlacemarksContext } from '../..';
 
@@ -8,7 +8,7 @@ describe('List component', () => {
     render(<List />);
   });
 
-  it('Should not render ul when items in placemarks context is empty ', () => {
+  it('Should not render ul when items in placemarks context is empty', () => {
     const { container } = render(
       <PlacemarksContext.Provider value={{ items: [], setItems: () => {} }}>
         <List />
